@@ -1,0 +1,63 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="manifest" href="site.webmanifest">
+        <link rel="apple-touch-icon" href="icon.png">
+        <!-- Place favicon.ico in the root directory -->
+
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/main.css">
+    </head>
+    <body>
+        <!--[if lte IE 9]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+        <![endif]-->
+
+        <!-- Add your site or application content here -->
+
+        <!--This is our template. -->
+        <!--Data will be inserted in its according place, replacing the brackets.-->
+        <script id="address-template" type="text/x-handlebars-template">
+          <h3>{{title}}</h3>
+          {{publishedOn}} by <a href="{{authorUrl}}">{{author}}</a><br><i>{{category}}</i>
+          <br>
+          {{{body}}}
+          <hr>
+        </script>
+
+<!--Your new content will be displayed in here-->
+script is above and the content is below
+<div class="content-placeholder"></div>
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="js/blogarticles.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.js"></script>
+<script type="text/javascript">
+
+$(function () {
+
+  let theTemplateScript = $("#address-template").html();
+  let theTemplate = Handlebars.compile(theTemplateScript);
+  let theCompiledHtml = '';
+
+  rawData.forEach(function(x){
+    theCompiledHtml = theCompiledHtml + theTemplate(x);
+  });
+
+  $('.content-placeholder').html(theCompiledHtml);
+
+});
+
+</script>
+
+    </body>
+</html>
